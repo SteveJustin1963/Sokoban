@@ -5,8 +5,9 @@
 // Improved Sokoban Game in MINT with Dynamic Level Design
 
 // Constants
-20 w! 10 h!     // Width and height of the game area
+:A 20 w! 10 h!     // Width and height of the game area
 w h * b!        // Total size of the game buffer
+
 
 // Characters
 64 p! 35 l! 36 x! 46 f! 42 t! 43 o!  // @#$.*+ respectively
@@ -14,6 +15,7 @@ w h * b!        // Total size of the game buffer
 // Game state
 b /A g!         // Allocate game buffer
 0 q!            // Player position
+;
 
 // Read level design
 :R
@@ -95,7 +97,7 @@ b /A g!         // Allocate game buffer
 ;
 
 // Start the game
-G
+A G
 
 // Example level design (input this when prompted):
 // ####################
