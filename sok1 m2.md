@@ -100,29 +100,6 @@ b /A g!         // Allocate game buffer
 // Start the game
 G
 ```
+ 
 
-///////////////////////
-
-```
-// Compact Sokoban in MINT
-40w!18h!w h*b!64p!35l!36x!46f!42t!43o!b/A g!0q!
-:I b(f g/i+!)
-5 1*w+g+l!6 1*w+g+l!7 1*w+g+l!5 2*w+g+l!7 2*w+g+l!
-5 3*w+g+l!7 3*w+g+l!5 4*w+g+l!6 4*w+g+l!7 4*w+g+l!
-6 2*w+g+x!6 3*w+g+t!6 1*w+q!q g+p!;
-:D h(w(g/j w*/i++?/C)10/C);
-:M "g+?l=~(
-  "g+?x=(
-    "+g+?f=(fg+!x"+g+!pg+!f g q+!q!)
-    /E("+g+?t=(fg+!o"+g+!pg+!f g q+!q!))
-  )/E(
-    "g+?f=(p"g+!f g q+!q!)
-    /E("g+?t=(p"g+!f g q+!q!))
-  )
-);
-:G I/U(D/K"119=(qw-M)"115=(qw+M)"97=(q1-M)"100=(q1+M)"113=(/F/W));
-G
-```
-
-
-
+ 
