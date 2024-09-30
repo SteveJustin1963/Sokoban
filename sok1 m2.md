@@ -6,7 +6,7 @@
 w h * b!        // Total size of the game buffer
 
 // Characters
-64 p! 35 w! 36 x! 46 f! 42 t! 43 o!  // @#$.*+ respectively
+64 p! 35 l! 36 x! 46 f! 42 t! 43 o!  // @#$.*+ respectively
 
 // Game state
 b /A g!         // Allocate game buffer
@@ -15,32 +15,32 @@ b /A g!         // Allocate game buffer
 // Initialize level
 :I
   // Clear buffer with floor tiles
-  b(f g i!)
+  b(f g /i +!)
   // Add walls (example layout)
-  5 1* w+ w g!
-  6 1* w+ w g!
-  7 1* w+ w g!
-  5 2* w+ w g!
-  7 2* w+ w g!
-  5 3* w+ w g!
-  7 3* w+ w g!
-  5 4* w+ w g!
-  6 4* w+ w g!
-  7 4* w+ w g!
+  5 1 * w + g + l!
+  6 1 * w + g + l!
+  7 1 * w + g + l!
+  5 2 * w + g + l!
+  7 2 * w + g + l!
+  5 3 * w + g + l!
+  7 3 * w + g + l!
+  5 4 * w + g + l!
+  6 4 * w + g + l!
+  7 4 * w + g + l!
   // Add boxes
-  6 2* w+ x g!
+  6 2 * w + g + x!
   // Add targets
-  6 3* w+ t g!
+  6 3 * w + g + t!
   // Set player position
-  6 1* w+ q!
-  p g q+!
+  6 1 * w + q!
+  q g + p!
 ;
 
 // Draw game state
 :D
   h(
     w(
-      g i w* j+ ? /C
+      g /j w * /i + + ? /C
     )
     10 /C  // New line
   )
@@ -48,32 +48,32 @@ b /A g!         // Allocate game buffer
 
 // Move player
 :M
-  " g+ ? w = ~ (  // If not wall
-    " g+ ? x = (   // If box
-      " + g+ ? f = (  // If next space is floor
-        f g+!   // Move box
-        x " + g+!
-        p g+!  // Move player
-        f g q+!
+  " g + ? l = ~ (  // If not wall
+    " g + ? x = (   // If box
+      " + g + ? f = (  // If next space is floor
+        f g +!   // Move box
+        x " + g +!
+        p g +!  // Move player
+        f g q +!
         q!     // Update player position
       ) /E (
-        " + g+ ? t = (  // If next space is target
-          f g+!   // Move box
-          o " + g+!
-          p g+!  // Move player
-          f g q+!
+        " + g + ? t = (  // If next space is target
+          f g +!   // Move box
+          o " + g +!
+          p g +!  // Move player
+          f g q +!
           q!     // Update player position
         )
       )
     ) /E (
-      " g+ ? f = (  // If floor
-        p " g+!   // Move player
-        f g q+!
+      " g + ? f = (  // If floor
+        p " g +!   // Move player
+        f g q +!
         q!        // Update player position
       ) /E (
-        " g+ ? t = (  // If target
-          p " g+!    // Move player
-          f g q+!
+        " g + ? t = (  // If target
+          p " g +!    // Move player
+          f g q +!
           q!         // Update player position
         )
       )
