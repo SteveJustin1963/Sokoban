@@ -5,16 +5,21 @@
 // Improved Sokoban Game in MINT with Dynamic Level Design
 
 // Constants
-:A 20 w! 10 h!     // Width and height of the game area
-w h * b!        // Total size of the game buffer
+:A 20 w! 10 h!
+// Width and height of the game area
+w h * b!
+// Total size of the game buffer
 
 
 // Characters
-64 p! 35 l! 36 x! 46 f! 42 t! 43 o!  // @#$.*+ respectively
+64 p! 35 l! 36 x! 46 f! 42 t! 43 o!
+// @#$.*+ respectively
 
 // Game state
-b /A g!         // Allocate game buffer
-0 q!            // Player position
+b /A g!
+// Allocate game buffer
+0 q!
+// Player position
 ;
 
 // Read level design
@@ -35,39 +40,56 @@ b /A g!         // Allocate game buffer
     w(
       g /j w * /i + + ? /C
     )
-    10 /C  // New line
+    10 /C
+// New line
   )
 ;
 
 // Move player
 :M
-  " g + ? l = ~ (  // If not wall
-    " g + ? x = (   // If box
-      " + g + ? f = (  // If next space is floor
-        f g +!   // Move box
+  " g + ? l = ~ (
+// If not wall
+    " g + ? x = (
+// If box
+      " + g + ? f = (
+// If next space is floor
+        f g +!
+// Move box
         x " + g +!
-        p g +!  // Move player
+        p g +!
+// Move player
         f g q +!
-        q!     // Update player position
+        q!
+// Update player position
       ) /E (
-        " + g + ? t = (  // If next space is target
-          f g +!   // Move box
+        " + g + ? t = (
+// If next space is target
+          f g +!
+// Move box
           o " + g +!
-          p g +!  // Move player
+          p g +!
+// Move player
           f g q +!
-          q!     // Update player position
+          q!
+// Update player position
         )
       )
     ) /E (
-      " g + ? f = (  // If floor
-        p " g +!   // Move player
+      " g + ? f = (
+// If floor
+        p " g +!
+// Move player
         f g q +!
-        q!        // Update player position
+        q!
+// Update player position
       ) /E (
-        " g + ? t = (  // If target
-          p " g +!    // Move player
+        " g + ? t = (
+// If target
+          p " g +!
+// Move player
           f g q +!
-          q!         // Update player position
+          q!
+// Update player position
         )
       )
     )
@@ -83,16 +105,22 @@ b /A g!         // Allocate game buffer
 
 // Game loop
 :G
-  R  // Read level design
+  R
+// Read level design
   /U (
     D
     W ( `You win!` /F /W )
     /K
-    " 119 = ( q w - M )  // W - Up
-    " 115 = ( q w + M )  // S - Down
-    " 97 = ( q 1 - M )   // A - Left
-    " 100 = ( q 1 + M )  // D - Right
-    " 113 = ( /F /W )    // Q - Quit
+    " 119 = ( q w - M )
+// W - Up
+    " 115 = ( q w + M )
+// S - Down
+    " 97 = ( q 1 - M )
+// A - Left
+    " 100 = ( q 1 + M )
+// D - Right
+    " 113 = ( /F /W )
+// Q - Quit
   )
 ;
 
